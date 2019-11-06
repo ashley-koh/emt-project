@@ -1,4 +1,4 @@
-name: emt
+name: emt-project
 channels:
   - defaults
 dependencies:
@@ -20,9 +20,5 @@ dependencies:
     - gevent==1.4.0
     - gevent-websocket==0.10.1
     - greenlet==0.4.15
-    - numpy==1.17.3
-    - opencv-python==4.1.1.26
     - pycparser==2.19
     - whichcraft==0.6.1
-prefix: C:\Users\ashle\Anaconda3\envs\emt
-

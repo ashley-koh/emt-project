@@ -5,7 +5,7 @@ This is the github repository for my group's EMT mini-project.
 
 ## Dependancies
 
-This project requires that you have [Anaconda 3.7](https://www.anaconda.com/distribution/#download-section). Please install if you do not have it.
+This project requires that you have [Anaconda 3.7](https://www.anaconda.com/distribution/#download-section) and [Git](https://git-scm.com/downloads). Please have them installed.
 
 ## Installation
 
@@ -17,6 +17,8 @@ This project requires that you have [Anaconda 3.7](https://www.anaconda.com/dist
 
 4. `cd emt-project`
 
-5. `conda env create --file environment.txt`
+5. `conda env create --file environment.yml`
 
-6. `python index.py`
+6. `conda activate emt-project`
+
+7. `python index.py`
