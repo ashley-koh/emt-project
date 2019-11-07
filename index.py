@@ -1,3 +1,12 @@
+import eel
+
+eel.init('web')
+
+@eel.expose
+def click_func_py():
+  eel.changeHtml()
+
+eel.start('index.html')
 
 import cv2
 
@@ -15,6 +24,6 @@ while True:
     # [show]
     cv2.imshow('Frame', frame)
 
-    keyboard = cv2.waitKey(0)
+    keyboard = cv2.waitKey(30)
     if keyboard == 'q' or keyboard == 27:
         break
