@@ -8,10 +8,10 @@ def click_func_py():
 
 eel.start('index.html')
 
-import cv2
+import cv2 as cv
 
 # [capture]
-capture = cv2.VideoCapture(0)
+capture = cv.VideoCapture(0)
 
 while True:
     ret, frame = capture.read()
@@ -22,8 +22,8 @@ while True:
     #Code
 
     # [show]
-    cv2.imshow('Frame', frame)
+    cv.imshow('Frame', frame)
 
-    keyboard = cv2.waitKey(30)
+    keyboard = cv.waitKey(30)
     if keyboard == 'q' or keyboard == 27:
         break
