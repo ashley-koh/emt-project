@@ -18,15 +18,13 @@
     <!-- Tab Title -->
     <title>EMT Project</title>
   </head>
-  <body>
-
+  <body onload="eel.video_feed()">
     <!-- HTML STARTS HERE -->
 
-    <!-- <p id="para1">Hello this is the original text</p>
-    <button type='button' onclick='eel.click_func_py()'>Click Me</button> -->
-
-    <h1>Video Streaming Demonstration</h1>
-    <button onclick="py_video()">Start feed</button>
+    <div class="loading">
+      <span>Fetching Video</span>
+      <div class="lds-dual-ring"></div>
+    </div>
     <img id="bg" src="" alt="">
 
 

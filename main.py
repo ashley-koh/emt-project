@@ -1,5 +1,4 @@
 import logging
-import os
 import sys
 from tkinter import Tk, messagebox
 import eel
@@ -31,9 +30,6 @@ def video_feed():
 
 def start_app():
   try:
-    BASEDIR = os.path.dirname(os.path.abspath(__file__))
-    web_dir = BASEDIR
-    print(web_dir)
     start_html_page = 'index.html'
     eel.init('web')
     logging.info("App Started")
