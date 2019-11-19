@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel = "stylesheet" type = "text/css" href = "style.css" >
+    <link rel="stylesheet" type="text/css" href=""
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -28,39 +29,28 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#">Video <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="index.html">Video <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="images.html">Images</a>
           <a class="nav-item nav-link" href="process.html">Process</a>
-          <a class="nav-item nav-link" href="configuration.html">Configuration</a>
+          <a class="nav-item nav-link active" href="#">Configuration</a>
         </div>
       </div>
-    </nav>    
+    </nav>
 
     <div class="loading">
-        <div class="lds-dual-ring"></div>
-        <span>Fetching Video</span>
-      </div>
-
-    <div class='video-page'>
-      <div class='row' id='first-row'> 
-        <img id="bg" src="" alt="">
-        <div class='col'>
-          <h2>Status</h2>
-        </div>
-      </div>
-      <div class='row'>
-        <div class="col">
-          <button id="stop-capture-btn" onclick="eel.stop_video_feed()" type="button" class="btn btn-primary">Pause</button>
-        </div>
-        <div class="col">
-          <button id="restart-capture-btn" onclick="eel.restart_video_feed()" type="button" class="btn btn-primary">Resume</button>
-        </div>
-        <div class="col">
-          <button id="save-image-btn" onclick="eel.save_last_frame()" type="button" class="btn btn-dark">Take Photo</button>
-        </div>
-      </div>
+      <div class="lds-dual-ring"></div>
     </div>
 
+    <div class="container-fluid">
+      <div class="row ">
+        <div class="col">
+          <h2>Video Configuration</h2>
+        </div>
+        <div class="col">
+            <h2>OpenCV Configuration</h2>
+          </div>
+      </div>
+    </div>
 
     <!-- HTML ENDS HERE -->
 

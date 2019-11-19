@@ -19,7 +19,6 @@ def gen(camera):
 
 @eel.expose
 def video_feed():
-  x = VideoCamera()
   y = gen(x)
 
   for each in y:
@@ -27,6 +26,18 @@ def video_feed():
     blob = base64.b64encode(each)
     blob = blob.decode("utf-8")
     eel.updateImageSrc(blob)()
+
+@eel.expose
+def save_last_frame():
+  x.save_last_frame()
+
+@eel.expose
+def stop_video_feed():
+  x.stop_capturing()
+
+@eel.expose
+def restart_video_feed():
+  x.restart_capturing()
 
 def start_app():
   try:
@@ -45,4 +56,5 @@ def start_app():
 
 
 if __name__ == "__main__":
+  x = VideoCamera()
   start_app()
