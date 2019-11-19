@@ -21,4 +21,4 @@ This project requires that you have [Anaconda 3.7](https://www.anaconda.com/dist
 
 6. `conda activate emt-project`
 
-7. `python index.py`
+7. `python main.py`
