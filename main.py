@@ -5,6 +5,13 @@ import eel
 from camera import VideoCamera
 import base64
 import time
+import os
+
+@eel.expose
+def retrieve_images():
+  path = "./web/images"
+  images = os.listdir(path)
+  return images
 
 def show_error(title, msg):
   root = Tk()
@@ -53,7 +60,6 @@ def start_app():
     show_error(title='Failed to initialise server', msg=err_msg)
     logging.info('Closing App')
     sys.exit()
-
 
 if __name__ == "__main__":
   x = VideoCamera()

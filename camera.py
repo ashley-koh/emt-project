@@ -7,7 +7,7 @@ class VideoCamera(object):
 
   def __init__(self):
 
-    self.VIDEO_DEVICE = 1
+    self.VIDEO_DEVICE = 2
     self.IMAGE_WIDTH = 1000
     self.IMAGE_HEIGHT = 720
 
@@ -31,8 +31,8 @@ class VideoCamera(object):
     self.active = True
 
   def save_last_frame(self):
-    number_of_files = len([img for img in os.listdir('./images') if img[:6] == 'image-'])
-    filename = './images/image-{}.jpg'.format(number_of_files)
+    number_of_files = len([img for img in os.listdir('./web/images') if img[:6] == 'image-'])
+    filename = './web/images/image-{}.jpg'.format(number_of_files)
 
     cv.imwrite(filename, self.last_frame)
 
@@ -48,8 +48,6 @@ class VideoCamera(object):
       # We are using Motion JPEG, but OpenCV defaults to capture raw images,
       # so we must encode it into JPEG in order to correctly display the
       # video stream.
-
-      print(self.VIDEO_DEVICE)
 
       frame = cv.flip(frame, 1)
 

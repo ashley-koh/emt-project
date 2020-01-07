@@ -50,6 +50,7 @@ body {
   border-color: #09f transparent #09f transparent;
   animation: lds-dual-ring 1s linear infinite;
 }
+
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);
@@ -57,4 +58,8 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+#image-gallery img {
+  margin: 25px;
 }
