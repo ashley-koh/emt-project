@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel = "stylesheet" type = "text/css" href = "style.css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/eel.js"></script>
@@ -30,7 +31,6 @@
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="#">Video <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="images.html">Images</a>
-          <a class="nav-item nav-link" href="process.html">Process</a>
           <a class="nav-item nav-link" href="configuration.html">Configuration</a>
         </div>
       </div>
@@ -43,22 +43,45 @@
 
     <div class='video-page'>
       <div class='row' id='first-row'> 
-        <img id="bg" src="" alt="">
-        <div class='col'>
-          <h2>Status</h2>
+
+        <div class='col-9'>
+          <img id="bg" src="" alt="">
+          <div class='row justify-content-center video-buttons'>
+            <div class="btn-group" role="group" aria-label="Video Buttons">
+              <button type="button" class="btn btn-primary" onclick="eel.stop_video_feed()" >Pause</button>
+              <button type="button" class="btn btn-primary" onclick="eel.restart_video_feed()" >Resume</button>
+              <button type="button" class="btn btn-primary" onclick="eel.save_last_frame()" >Take Photo</button>
+              <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select Frame
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item" href="#" onclick="eel.select_frame(0)">Original</a>
+                  <a class="dropdown-item" href="#" onclick="eel.select_frame(1)">Masked</a>
+                  <a class="dropdown-item" href="#" onclick="eel.select_frame(2)">Gray Scale</a>
+                  <a class="dropdown-item" href="#" onclick="eel.select_frame(3)">Final</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class='col-3'>
+          <div class="row status">
+            <div class="col-4">
+              <h2>Analysis:</h2>
+            </div>
+            <div class="col-8">
+              <h2 class="stick-status badge badge-warning">Initializing</h2>
+            </div>
+          </div>
+          <div class="row">
+            <span>Stick Present: <span class="badge badge-warning">Initializing</span></span>
+          </div>
+        </div>
+
       </div>
-      <div class='row'>
-        <div class="col">
-          <button id="stop-capture-btn" onclick="eel.stop_video_feed()" type="button" class="btn btn-primary">Pause</button>
-        </div>
-        <div class="col">
-          <button id="restart-capture-btn" onclick="eel.restart_video_feed()" type="button" class="btn btn-primary">Resume</button>
-        </div>
-        <div class="col">
-          <button id="save-image-btn" onclick="eel.save_last_frame()" type="button" class="btn btn-dark">Take Photo</button>
-        </div>
-      </div>
+      
     </div>
 
 

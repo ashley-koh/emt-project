@@ -11,15 +11,16 @@
     <link rel="stylesheet" type="text/css" href=""
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/eel.js"></script>
-    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./configuration.js"></script>
 
     <!-- Tab Title -->
     <title>EMT Project</title>
   </head>
-  <body onload="eel.video_feed()">
+  <body onload="get_config()">
     <!-- HTML STARTS HERE -->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -31,26 +32,99 @@
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="index.html">Video <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="images.html">Images</a>
-          <a class="nav-item nav-link" href="process.html">Process</a>
           <a class="nav-item nav-link active" href="#">Configuration</a>
         </div>
       </div>
     </nav>
 
-    <div class="loading">
-      <div class="lds-dual-ring"></div>
-    </div>
-
-    <div class="container-fluid">
+    <div class="config-page">
       <div class="row ">
-        <div class="col">
-          <h2>Video Configuration</h2>
+        <div class="col-xl-4 col-lg-8 col-md-8 col-sm-10" >
+          <h2 class="opencv-title">OpenCV Configuration</h2>
+          <form>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-8">
+                  <label for="maxWhite">White Threshold</label>
+                  <input type="number" class="form-control" id="maxWhite" aria-describedby="maxWhite">
+                  <small id="maxWhiteHelp" class="form-text text-muted">Adjusts the threshold for white background</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <label for="brightness">Additional Brightness</label>
+                  <input type="number" class="form-control" id="brightness" aria-describedby="brightness">
+                  <small id="brightnessHelp" class="form-text text-muted">Add Brightness to input video</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <label for="canny">Canny Threshold</label>
+                  <input type="number" class="form-control" id="canny" aria-describedby="canny">
+                  <small id="cannyHelp" class="form-text text-muted">Adjusts the threshold for Canny Edge Detection</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <label for="size">Stick Size</label>
+                  <input type="number" class="form-control" id="size" aria-describedby="size">
+                  <small id="sizeHelp" class="form-text text-muted">Adjusts Stick Size on video</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <label for="dot">Dot Size</label>
+                  <input type="number" class="form-control" id="dot" aria-describedby="dot">
+                  <small id="dotHelp" class="form-text text-muted">Adjusts Dot Size on video</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <label for="noise">Lower Threshold for Contours</label>
+                  <input type="number" class="form-control" id="noise" aria-describedby="noise">
+                  <small id="noiseHelp" class="form-text text-muted">Decreases Noise on Contours</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8 opencv-button">
+                  <button type="button" class="btn btn-primary" onclick="updateConfig()">Update</button>
+                  <button type="button" class="btn btn-outline-dark">Undo</button>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="col">
-            <h2>OpenCV Configuration</h2>
+        <div class="col-xl-4 col-lg-8 col-md-8 col-sm-10">
+            <h2>Colour Configuration</h2>
+            <form>
+              <div class="form-group row">
+                <label for="colourSelect" class="col-sm-2 col-form-label">Colour:</label>
+                <div class="col-sm-4">
+                  <select class="form-control" id="colourSelect">
+                    <option>Blue</option>
+                    <option>Purple</option>
+                    <option>Orange</option>
+                    <option>Red</option>
+                    <option>Yellow</option>
+                    <option>Green</option>
+                  </select>
+                </div>
+              </div>
+            </form>
           </div>
       </div>
     </div>
+
+    <div class="toast" id="updated-config-toast" role="alert" aria-live="polite" aria-atomic="true" style="position: absolute; top: 80px; right: 25px;" data-autohide="true" data-delay="5000">
+      <div class="toast-header">
+        <img src="..." class="rounded mr-2" alt="...">
+        <strong class="mr-auto"><i class="fa fa-grav"></i>Configuration Update</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+      </div>
+      <div class="toast-body">
+        You have just updated the OpenCV Configurations!
+      </div>
+  </div>
 
     <!-- HTML ENDS HERE -->
 

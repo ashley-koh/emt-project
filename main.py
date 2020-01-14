@@ -6,12 +6,13 @@ from camera import VideoCamera
 import base64
 import time
 import os
+import json
 
 @eel.expose
 def retrieve_images():
   path = "./web/images"
   images = os.listdir(path)
-  return images
+  return images[::-1]
 
 def show_error(title, msg):
   root = Tk()
@@ -45,6 +46,40 @@ def stop_video_feed():
 @eel.expose
 def restart_video_feed():
   x.restart_capturing()
+
+@eel.expose
+def select_frame(frame_number):
+  x.select_frame(frame_number)
+
+@eel.expose
+def get_status():
+  return x.status
+
+@eel.expose
+def get_config():
+
+  with open('data.txt') as json_file:
+    data = json.load(json_file)
+    print(data['config'])
+    return data['config']
+
+@eel.expose
+def update_config(configObj):
+  print(configObj)
+  x.maxWhite = configObj['maxWhite']
+  x.brightness = configObj['brightness']
+  x.threshold = configObj['threshold']
+  x.size = configObj['size']
+  x.dot = configObj['dot']
+  x.noise = configObj['noise']
+
+@eel.expose
+def add_new_config(configObj):
+  with open('data.txt') as json_file:
+    data = json.load(json_file)
+    data['config'].insert(0, configObj)
+    with open('data.txt', 'w') as outfile:
+      json.dump(data, outfile)
 
 def start_app():
   try:

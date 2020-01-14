@@ -1,4 +1,5 @@
 let currentPage = 'video-page';
+let status = "Initializing";
 
 function py_video() {
   eel.video_feed()()
@@ -11,10 +12,17 @@ function updateImageSrc(val) {
   let elem = document.getElementById('bg');
   elem.src = "data:image/jpeg;base64," + val;
   $('#bg')
-    .css('width', '70%')
+    .css('width', '100%')
     .css('height', 'auto')
     .css('border-radius', '5px')
     .css('border', '1px solid #333');
+
+  eel.get_status()()
+    .then(status => {
+      console.log(status)
+      $('.status .stick-status').html(status)
+    })
+    .catch(err => console.log(err))
 }
 
 let captureActive = true;
@@ -30,3 +38,10 @@ $(window).keypress(function(e) {
     }
   }
 });
+
+$(window).keypress(function(e) {
+  let number = e.key
+
+  if (number === '1' || number === '2' || number === '3' || number === '4')
+    eel.select_frame(parseInt(number) - 1)
+})
