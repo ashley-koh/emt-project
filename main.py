@@ -56,16 +56,14 @@ def get_status():
   return x.status
 
 @eel.expose
-def get_config():
+def get_data():
 
   with open('data.txt') as json_file:
     data = json.load(json_file)
-    print(data['config'])
-    return data['config']
+    return data
 
 @eel.expose
 def update_config(configObj):
-  print(configObj)
   x.maxWhite = configObj['maxWhite']
   x.brightness = configObj['brightness']
   x.threshold = configObj['threshold']
@@ -81,6 +79,16 @@ def add_new_config(configObj):
     with open('data.txt', 'w') as outfile:
       json.dump(data, outfile)
 
+@eel.expose
+def update_colour(colourObj):
+  print(colourObj)
+  with open('data.txt') as json_file:
+    data = json.load(json_file)
+    data['colour'] = {}
+    data['colour'] = colourObj
+    with open('data.txt', 'w') as outfile:
+      json.dump(data, outfile)
+  
 def start_app():
   try:
     start_html_page = 'index.html'

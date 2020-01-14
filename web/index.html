@@ -66,17 +66,37 @@
           </div>
         </div>
 
-        <div class='col-3'>
+        <div class='col-3 status'>
           <div class="row status">
             <div class="col-4">
               <h2>Analysis:</h2>
             </div>
             <div class="col-8">
-              <h2 class="stick-status badge badge-warning">Initializing</h2>
+              <!-- <h2 class="stick-status badge badge-warning">Initializing</h2> -->
             </div>
           </div>
           <div class="row">
-            <span>Stick Present: <span class="badge badge-warning">Initializing</span></span>
+            <div class="col-4">
+              <span>Stick Status: </span>
+            </div>
+            <div class="col-8 status">
+              <span class="stick-status">Initializing</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <span>Colour: </span>
+            </div>
+            <div class="col-8">
+              <select class="form-control" id="colourSelect">
+                <option>Blue</option>
+                <option>Purple</option>
+                <option>Orange</option>
+                <option>Red</option>
+                <option>Yellow</option>
+                <option>Green</option>
+              </select>
+            </div>
           </div>
         </div>
 

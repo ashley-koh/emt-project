@@ -1,8 +1,16 @@
 let currentPage = 'video-page';
 let status = "Initializing";
 
+let config = {}
+let colour = {}
+
 function py_video() {
   eel.video_feed()()
+  eel.get_data()()
+    .then(res => {
+      config = res.config
+      colour = res.colour
+    })
 }
 
 eel.expose(updateImageSrc);
