@@ -58,7 +58,8 @@ def get_status():
 @eel.expose
 def get_colour():
   print(x.Color)
-  return x.Color
+  colour = [int(x.Color[0]), int(x.Color[1]), int(x.Color[2])]
+  return colour
 
 @eel.expose
 def get_data():
