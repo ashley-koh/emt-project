@@ -99,7 +99,7 @@ class VideoCamera(object):
       main = frame
 
       frame = increase_brightness(frame, self.brightness)
-      frame = color(frame, 2, self.Color, self.maxWhite)
+      frame = self.color(frame, 2, self.Color, self.maxWhite)
 
       gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
@@ -211,25 +211,3 @@ def increase_brightness(img, value):
   final_hsv = cv.merge((h, s, v))
   img = cv.cvtColor(final_hsv, cv.COLOR_HSV2BGR)
   return img
-
-def color(img, k, Color, maxWhite):
-  Z = img.reshape((-1, 3))
-
-  # convert to np.float32
-  Z = np.float32(Z)
-
-  # define criteria, number of clusters(K) and apply kmeans()
-  criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 4, 0.75)
-  ret, label, center = cv.kmeans(Z, k, None, criteria, 2, cv.KMEANS_RANDOM_CENTERS)
-
-  for i in range (len(center)):
-      col = center[i]
-      num = col[0] + col[1] + col[2]
-      if num < maxWhite:
-          Color = center[i]
-
-  center = np.uint8(center)
-  res = center[label.flatten()]
-  res2 = res.reshape((img.shape))
-
-  return res2

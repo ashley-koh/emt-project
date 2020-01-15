@@ -41,6 +41,8 @@ function updateImageSrc(val) {
 
       let ranges = colourData[selectedColour];
 
+      console.log(ranges)
+
       if (colour[0] > ranges.lower.b && colour[0] < ranges.upper.b) {
         if (colour[1] > ranges.lower.g && colour[1] < ranges.upper.g) {
           if (colour[2] > ranges.lower.r && colour[2] < ranges.upper.r) {
