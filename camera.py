@@ -61,6 +61,28 @@ class VideoCamera(object):
   def select_frame(self, frame_number):
     self.selected_frame = frame_number
 
+  def color(self, img, k, Color, maxWhite):
+    Z = img.reshape((-1, 3))
+
+    # convert to np.float32
+    Z = np.float32(Z)
+
+    # define criteria, number of clusters(K) and apply kmeans()
+    criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 4, 0.75)
+    ret, label, center = cv.kmeans(Z, k, None, criteria, 2, cv.KMEANS_RANDOM_CENTERS)
+
+    for i in range (len(center)):
+        col = center[i]
+        num = col[0] + col[1] + col[2]
+        if num < maxWhite:
+            self.Color = center[i]
+
+    center = np.uint8(center)
+    res = center[label.flatten()]
+    res2 = res.reshape((img.shape))
+
+    return res2
+
   def get_frame(self):
 
     if self.active:
