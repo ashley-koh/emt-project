@@ -39,6 +39,8 @@ function updateImageSrc(val) {
   eel.get_colour()()
     .then(colour => {
 
+      console.log(colour)
+
       let ranges = colourData[selectedColour];
 
       if (colour[0] > ranges.lower.b && colour[0] < ranges.upper.b) {
