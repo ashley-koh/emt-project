@@ -7,7 +7,7 @@ class VideoCamera(object):
 
   def __init__(self):
 
-    self.VIDEO_DEVICE = 0
+    self.VIDEO_DEVICE = 1
     self.IMAGE_WIDTH = 1000
     self.IMAGE_HEIGHT = 720
 
@@ -154,6 +154,8 @@ class VideoCamera(object):
           cv.rectangle(drawing, (int(boundRect[i][0]), int(boundRect[i][1])),
                     (int(boundRect[i][0] + boundRect[i][2]), int(boundRect[i][1] + boundRect[i][3])), red, 2)
           drawing = cv.putText(drawing, "Broken", (int(boundRect[i][0]), int(boundRect[i][1])-15),
+                            cv.FONT_HERSHEY_PLAIN, 1, red, 1, cv.LINE_AA)
+          drawing = cv.putText(drawing, str(self.Color), (int(boundRect[i][0]), int(boundRect[i][1])-30),
                             cv.FONT_HERSHEY_PLAIN, 1, red, 1, cv.LINE_AA)
           status = "Broken"
           # area

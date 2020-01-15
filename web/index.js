@@ -39,6 +39,8 @@ function updateImageSrc(val) {
   eel.get_colour()()
     .then(colour => {
 
+      console.log(colour)
+
       let ranges = colourData[selectedColour];
 
       console.log(ranges)
@@ -57,6 +59,7 @@ function updateImageSrc(val) {
         $('.stick-colour').text("False")
       }
     })
+    .catch(err => console.log(err))
 
 }
 
