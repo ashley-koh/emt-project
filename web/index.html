@@ -19,7 +19,7 @@
     <!-- Tab Title -->
     <title>EMT Project</title>
   </head>
-  <body onload="eel.video_feed()">
+  <body onload="py_video()">
     <!-- HTML STARTS HERE -->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -83,19 +83,27 @@
               <span class="stick-status">Initializing</span>
             </div>
           </div>
-          <div class="row">
+          <div class="row" style="margin-top: 15px;">
             <div class="col-4">
               <span>Colour: </span>
             </div>
-            <div class="col-8">
-              <select class="form-control" id="colourSelect">
-                <option>Blue</option>
-                <option>Purple</option>
-                <option>Orange</option>
-                <option>Red</option>
-                <option>Yellow</option>
-                <option>Green</option>
+            <div class="col-4">
+              <select onchange="selectColour()" class="form-control" id="colourSelect">
+                <option value="blue">Blue</option>
+                <option value="purple">Purple</option>
+                <option value="orange">Orange</option>
+                <option value="red">Red</option>
+                <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
               </select>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-4">
+              <span>Is Colour: </span>
+            </div>
+            <div class="col-8">
+              <span class="stick-colour">NG</span>
             </div>
           </div>
         </div>

@@ -56,6 +56,10 @@ def get_status():
   return x.status
 
 @eel.expose
+def get_colour():
+  return x.Color
+
+@eel.expose
 def get_data():
 
   with open('data.txt') as json_file:
@@ -70,6 +74,8 @@ def update_config(configObj):
   x.size = configObj['size']
   x.dot = configObj['dot']
   x.noise = configObj['noise']
+
+  add_new_config(configObj)
 
 @eel.expose
 def add_new_config(configObj):
