@@ -57,7 +57,6 @@ def get_status():
 
 @eel.expose
 def get_colour():
-  print(x.Color)
   return x.Color
 
 @eel.expose

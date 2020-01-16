@@ -7,7 +7,7 @@ class VideoCamera(object):
 
   def __init__(self):
 
-    self.VIDEO_DEVICE = 1
+    self.VIDEO_DEVICE = 0
     self.IMAGE_WIDTH = 1000
     self.IMAGE_HEIGHT = 720
 
