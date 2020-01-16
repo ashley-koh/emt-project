@@ -62,7 +62,6 @@ class VideoCamera(object):
     self.selected_frame = frame_number
 
   def color(self, img, k, Color, maxWhite):
-    print(self.Color)
     Z = img.reshape((-1, 3))
 
     # convert to np.float32

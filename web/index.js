@@ -9,7 +9,6 @@ let selectedColour = 'blue';
 function py_video() {
   eel.get_data()()
     .then(res => {
-      console.log(res)
       colourData = res.colour;
       config = res.config;
     })
@@ -39,24 +38,20 @@ function updateImageSrc(val) {
   eel.get_colour()()
     .then(colour => {
 
-      console.log(colour)
-
       let ranges = colourData[selectedColour];
-
-      console.log(ranges)
 
       if (colour[0] > ranges.lower.b && colour[0] < ranges.upper.b) {
         if (colour[1] > ranges.lower.g && colour[1] < ranges.upper.g) {
           if (colour[2] > ranges.lower.r && colour[2] < ranges.upper.r) {
             $('.stick-colour').text("True")
           } else {
-            $('.stick-colour').text("False")
+            $('.stick-colour').text("NG")
           }
         } else {
-          $('.stick-colour').text("False")
+          $('.stick-colour').text("NG")
         }
       } else {
-        $('.stick-colour').text("False")
+        $('.stick-colour').text("NG")
       }
     })
     .catch(err => console.log(err))

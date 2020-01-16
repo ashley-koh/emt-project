@@ -72,6 +72,16 @@ body {
   text-align: center;
 }
 
+.picture .btn-group {
+  position: absolute;
+  top: 15%;
+  right: 3%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  border: none;
+  cursor: pointer;
+}
+
 .config-page {
   margin: 25px;
 }
