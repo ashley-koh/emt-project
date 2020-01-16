@@ -62,6 +62,7 @@ class VideoCamera(object):
     self.selected_frame = frame_number
 
   def color(self, img, k, Color, maxWhite):
+    print(self.Color)
     Z = img.reshape((-1, 3))
 
     # convert to np.float32
@@ -130,7 +131,7 @@ class VideoCamera(object):
         lightBlue = (53, 167, 255)
 
         #non broken stick
-        if area > self.size and area < 39000:
+        if area > self.size and area < 50000:
           self.status = "Not Broken"
           # draw contours
           cv.drawContours(drawing, contours_poly, i, lightBlue)
