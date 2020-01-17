@@ -14,6 +14,12 @@ def retrieve_images():
   images = os.listdir(path)
   return images[::-1]
 
+@eel.expose
+def delete_image(image_path):
+  path = "./web/images/" + image_path
+  print(path)
+  os.remove(path)
+
 def show_error(title, msg):
   root = Tk()
   root.withdraw() #hide main window
