@@ -5,11 +5,6 @@ function deleteImage(path) {
   location.reload();
 }
 
-function copyImagePath(path) {
-  
-}
-
-
 eel.retrieve_images()()
   .then(data => {
     data.map(path => {
