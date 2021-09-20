@@ -2,6 +2,8 @@
 
 Made this as a submission to a project I had back in Poly for a module called EMT.
 
+This project aims to capture different types of ice-cream sticks using OpenCV with python and present them using frontend web technology.
+
 
 ## Dependancies
 
