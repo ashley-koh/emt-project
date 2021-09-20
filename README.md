@@ -1,6 +1,6 @@
 # Welcome
 
-This is the github repository for my group's EMT mini-project.
+Made this as a submission to a project I had back in Poly for a module called EMT.
 
 
 ## Dependancies
